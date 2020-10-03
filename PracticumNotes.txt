@@ -309,6 +309,21 @@ Style Sheet Decl:
   font-weight:bold;
 }
 
+HTML: video, iframe, embed, API. Introduction
+Iframe
+The <iframe> element is short for "inline frame." This is a container used to embed information from other sites. In essence, it's a regular page element, but renders information from other pages. You can set its width and height, and display another website inside your webpage.
+
+<iframe frameborder="0" width="600" height="100"  allow="fullscreen" src="https://music.yandex.com/iframe/#track/41284288/5400781/"></iframe>
+
+Embed playlists from Yandex or Google Music
+Embed YouTube videos
+Embed FB Posts
+Embed Book Previews from Amazon
+
+Cool Map Making Embedding Tool
+https://yandex.com/map-constructor/
+
+
 Rubber Duck Method - Explain your problems to a Rubber Duck
 
 
