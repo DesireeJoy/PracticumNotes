@@ -386,6 +386,33 @@ The URL link to the image that a user sees before they click "Play," or while th
 Copy codeHTML
 <video poster="/images/example.gif"></video>
 
+<audio> Tag
+
+<audio>
+    <source src="sound.mp3" type="audio/mp3">
+    <source src="sound.ogg" type="audio/ogg">
+    <!--If mp3 doesn't work, a browser will try the ogg format--> 
+</audio>
+Works with Mp3, Wav, OGG
+
+AUTOPLAY
+CONTROLS
+LOOP
+MUTED
+SRC
+TYPE
+
+YouTube API
+
+Through the link, you can set a video identifier, the start time for the playback, and the initial volume. You can find the identifier by opening the video you need and copying the last characters of its address, which comes after ?v=.
+For example, if the address is https://www.youtube.com/watch?v=wsWYVhIFFCw, the identifier is wsWYVhIFFCw. Use it here:
+https://developers.google.com/youtube/youtube_player_demo
+Once you've set your desired parameters, click on "Update player with selected options" and "Show player controls" to get the new iframe code for your project:
+Copy codeHTML
+<iframe id="ytplayer" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/wsWYVhIFFCw?start=3" frameborder="0" allowfullscreen>
+
+
+
 Rubber Duck Method - Explain your problems to a Rubber Duck
 
 
