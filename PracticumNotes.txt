@@ -405,13 +405,23 @@ TYPE
 YouTube API
 
 Through the link, you can set a video identifier, the start time for the playback, and the initial volume. You can find the identifier by opening the video you need and copying the last characters of its address, which comes after ?v=.
-For example, if the address is https://www.youtube.com/watch?v=wsWYVhIFFCw, the identifier is wsWYVhIFFCw. Use it here:
+ 
+For example, if the address is https://www.youtube.com/watch?v=wsWYVhIFFCw, the identifier is wsWYVhIFFCw. 
+ 
+Use it here:
 https://developers.google.com/youtube/youtube_player_demo
 Once you've set your desired parameters, click on "Update player with selected options" and "Show player controls" to get the new iframe code for your project:
+ 
 Copy codeHTML
 <iframe id="ytplayer" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/wsWYVhIFFCw?start=3" frameborder="0" allowfullscreen>
 
+In the src URL, notice the /embed/ after youtube.com. This means that the YouTube API is in use. This will only work if we write the code according to all the rules. Such rules are called API documentation. If you put /embed/ anywhere else in the link, it simply won't work.
 
+START
+
+The start attribute tells the browser to start the video at a certain second, and the = sign assigns the time in seconds. So, by giving the start attribute a value of 3, we make the video start playing from the third second.
+
+JS Scroll
 
 Rubber Duck Method - Explain your problems to a Rubber Duck
 
