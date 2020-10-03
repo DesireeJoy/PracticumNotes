@@ -315,6 +315,14 @@ The <iframe> element is short for "inline frame." This is a container used to em
 
 <iframe frameborder="0" width="600" height="100"  allow="fullscreen" src="https://music.yandex.com/iframe/#track/41284288/5400781/"></iframe>
 
+No Support for Iframe?
+Some users won't be able to see your iframe. While you can't do anything about browser support, you can write an error message that explains why they can't see parts of your page. Write the following information for users between the opening and closing iframe tags:
+Copy codeHTML
+<iframe>Hello! Your browser doesn't support iframe and can't show you this amazing thing.</iframe> 
+
+Iframe doesn’t work in spite of checking everything?
+The developer of the source page may not want you to link it.
+
 Embed playlists from Yandex or Google Music
 Embed YouTube videos
 Embed FB Posts
