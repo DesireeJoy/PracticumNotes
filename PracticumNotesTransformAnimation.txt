@@ -1,0 +1,15 @@
+Intro to Animation and Transform with CSS
+Transform
+div {
+    transform: matrix(2, 3, 4, 5, 6, 7);
+}
+The first parameter scales the element's width. The value of 2 above, for example, will double the element's size along the x-axis. It is equivalent to the transform value scaleX().
+The second parameter 3 describes the vertical skew of an element in degrees. A positive value raises the left edge of the element and lowers the right, while a negative value does the opposite. This is equivalent to the transform value skewY().
+The third parameter 4 is the horizontal skew in degrees. A positive value skews the top of the element to the left, and a negative value to the right. It is equivalent to the transform value skewX().
+The fourth parameter scales the element's height. The value of 5 expands it along the y-axis by a factor of 5. It is equivalent to the transform value scaleY().
+The fifth parameter 6 describes the translation of an element along the x-axis in pixels. It is equivalent to the transform value translateX().
+The sixth parameter 7 describes the translation of an element along the y-axis in pixels. It is equivalent to the transform value translateY().
+ 
+
+
+
