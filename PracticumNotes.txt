@@ -1,0 +1,314 @@
+/* This is a COMMENT */ CSS and Javascript Commenting
+< -- This is a Comment -- > HTML comment, but no space. Google docs thinks i want arrows.
+// JS Single Line Comments like this
+Integrated Development Environment
+
+<meta charset="utf-8"> specifies the character encoding for the page.
+<title> 
+<link rel="shortcut icon" href="favicon.ico"> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Webpage about various web technologies">
+<meta name="keywords" content="HTML5, CSS">
+<meta name="author" content="John Doe">
+<meta name="author" content="Jane Doe">
+HTML5 has provided developers with a whole lot of new containers. Say hello to semantic tags! They look just like divs but enjoy several advantages over them:
+Search engines parse site content more efficiently.
+They make pages more accessible to the visually impaired.
+They make your code easier for other developers to read.
+Semantic elements add clarity to the document structure by de
+<header></header>: the website header.
+<footer></footer>: the footer.
+<nav></nav>: the navigation, or the menu block.
+<main></main>: the main page content. On multi-page websites, it will contain everything that appears exclusively on that page.
+<section></section>: the container used for grouping elements together by theme or purpose.
+<article></article>: Big blocks of text
+<blockquote cite="https://practicum.yandex.com/">When the going gets tough, the tough get going.
+    We'll get you started and help you overcome any difficulties.</blockquote>
+<table>
+    <tr> <!-- first row with headers - break into cells with th tags -->
+        <th>row 1 cell 1 - header of the first column</th> 
+        <th>row 1 cell 2 - header of the second column</th>
+        <th>row 1 cell 3 - header of the third column</th>
+    </tr>
+    <tr> <!-- the second and subsequent lines are for content - break them with and td tags -->
+        <td>row 2 cell 1</td>
+        <td>row 2 cell 2</td>
+        <td>row 2 cell 3</td>
+    </tr>
+    <tr>
+        <td>row 3 cell 1</td>
+        <td>row 3 cell 2</td>
+        <td>row 3 cell 3</td>
+    </tr>    
+<tr>
+        <td colspan="3">Table cell</td> <!-- there is only 1 cell in this row -->
+    </tr>
+    <tr>
+        <td>row 4 cell 1</td>
+        <td>row 4 cell 2</td>
+        <td>row 4 cell 3</td>
+    </tr>    
+</table>
+
+
+BEM Methodology
+Block-name__elem-name_mod-name_mod-val
+https://en.bem.info/methodology/naming-convention/#naming-rules
+This is what BEM stands for, and these are the three key entities that BEM deals with.
+ 
+A block is an independent page component, such as a header, logo, or search bar. This concept is logical rather than technical. The official BEM specification defines the block as "a logically and functionally independent page component."
+ 
+A block can be freely moved around and placed on another page or website, and neither its appearance nor behaviour will change.
+Blocks can also be nested inside other blocks.
+ 
+An element is a constituent part of a block that can't be used outside of it.
+For example, a "Submit" button is a part of a web form and can't be used in another context. An element has no application outside its parent block.
+A modifier is a property applied to a block or an element. For example, we have a logo block, which is used twice; in the website header and footer. In both cases its appearance and behavior are the same, except that the logo is black in the header and white in the footer. This is when it's good to apply a modifier that changes the logo color.
+ 
+You shouldn’t set external margins or absolute positioning for blocks because this can cause them to appear differently depending on the situation, and you may have to reconfigure these properties.
+
+Use a word or several hyphenated words when naming a block class. For example, header and header-block are both acceptable.
+To name an element class, first write the name of the parent block, followed by two underscores (__), and then add the name of the element. If the name of the element has more than one word, separate each of them with a hyphen.
+HTML entities, @ © etc
+https://www.w3schools.com/html/html_entities.asp
+Mixing Styles
+Mixing means giving two names to one block, which results in a new block that has the properties of two mixed blocks.
+There are two ways to make mixes.
+ 
+<nav class="menu"></nav>
+<section class="content"></section>
+<footer class="footer"></footer>
+In the above example, say we want to set the identical text properties for the content and footer blocks. To do this, we'll create a new selector that will set the styles we want to see, then we'll add this class to all the blocks where we want the text to look like this.
+Let's create a BEM block called main-text and add some styles to it:
+ 
+.main-text {
+    color: #000;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: normal;
+}
+Next, we add the new class to the blocks where we want these styles applied. This process is what is referred to as mixing:
+ 
+<nav class="menu"></nav>
+<section class="content main-text"></section>
+<footer class="footer main-text"></footer>
+ 
+Pseudo Classes
+ 
+L — :link — unvisited links;
+V — :visited — visited links;
+H — :hover — hovered elements;
+A — :active — activated elements (ones that have just been clicked).
+Applying Styles Based on Markup
+The browser can analyze the page's markup. For example, it understands how many nested elements a block has and can calculate how many blocks of the same type there are on a page.
+Let's take a closer look at how it's used in practice. Online shopping sites often display items in a sort of grid.
+
+Margins are shown in green
+Each object has a margin on the right to ensure there's a gap between items, but the last one in each row shouldn't have this margin. Otherwise, you wouldn't be able to fit three items on each row, and they'd wrap onto the next.
+To fit three in a row, you need to remove the right margin of every third item. There is the nth-of-type pseudo-class for this task, that is, the nth element of this type. Using this pseudo-class, we can apply styles to every second, third, or tenth element etc.
+When writing the selector for this pseudo-class, you first write its name, followed by the number you need and the letter "n" enclosed in parentheses. So for example, writing "3n" means that the styles of this rule should be applied to every 3rd element.
+ 
+/* every 3rd element with the "card" class will have a right margin of 0 */
+.card:nth-of-type(3n) {
+    margin-right: 0;
+}
+Sometimes you'll only need to assign styles to the first or last element of a selector. To do this, we can use the first-of-type and last-of-type pseudo-classes respectively.
+Functional Pseudo-Classes
+Functional pseudo-classes allow you to style elements by looking at the HTML code or the history of user actions. For example, the has pseudo-class is used to apply styles to elements containing specific nested tags. We do this by writing the tag names inside parentheses:
+ 
+/* styles will apply only to sections containing an h2 element */
+section:has(h2) {
+    /* styles */
+}
+Another useful functional pseudo-class is not. Whatever you put in parentheses, the selector will apply the enclosed set of styles to anything that is not in this state:
+
+/* will select all unvisited links */
+a:not(:visited) {
+    /* styles */
+}
+ 
+Before/After Pseudos
+ 
+To do this, we have the before and after pseudo-elements. They're traditionally written with two colons after the selector:
+.selector::before {
+    /* styles for the 'before' pseudo-element */
+}
+.selector::after {
+    /* styles for the 'after' pseudo-element */
+}
+Attribute Selectors
+
+img[src='logo.png'] {
+    border: 1px solid #0000ff;
+}
+
+File Structures
+
+1. HTML files are stored in the root directory.
+2. The root directory will also contain nested subdirectories:
+3. /images includes icons, background images, and content images, which may have different extensions;
+4. /styles contains stylesheets;
+5. /scripts hosts JavaScript files;
+6. /fonts store different fonts used in the project.
+ 
+Navigating File Structures
+./ — the command which refers to the directory you're at now
+../ — refers to the directory on the upper lever.
+CSS @ Rules
+The @import at-rule allows you to include external files - such as fonts or extra snippets of CSS code - in the current stylesheet.
+@import url(main.css);
+@import will only work when it's written at the beginning of a file. External files load first. The styles that come after them can overwrite them.
+The way @import works in CSS is that each at-rule is loaded and processed in the order in which they appear in the code. This may slow down the load speed of your website. The <link> element, on the other hand, lets you load files simultaneously.
+
+Cheat Sheet Command Line
+We’ve prepared a cheat sheet for you. If you forget any commands, remember to come back to this lesson. We didn’t cover all of the commands on the list, so give them a quick run-through even if you remember the previous lesson well.
+pwd shows you what folder you’re in
+ls shows files in the folder you’re in
+cd first-project go to the first-project folder
+cd first-project/html go to the html folder in the first-project folder
+cd .. go up one level to the parent folder
+cd ~ go to your home directory (that’s /Users/students_yandex in our case)
+mkdir second-project lets you create a folder with the name second-project in the current folder
+rm about.html deletes the about.html file
+rmdir images deletes the images folder
+rm -r second-project deletes the second-project folder and everything in it
+touch index.html creates the index.html file in the current folder
+touch index.html style.css script.js if several files need to be created, their names can be separated with spaces
+To avoid having to enter file and folder names in full, you can start to enter their name and press the Tab key. 
+ 
+We need to turn our project folder into a git repository, so that Git can start working with it. That means that Git will start tracking all changes made inside that directory. To do that, go to the folder containing the project and enter the command:
+Initializing Git Repository
+git init
+The command prompt will reply with a message that the repository has been initialized.
+Make the first-project folder a git repository. To do that, go to the first-project folder using the cd command, and write git init in the command line.
+After that, run the git status command. Git will reply that this folder has two files, index.html and style.css:
+ 
+Git calls these files untracked files. That means that Git sees them, but it won’t be able to save their version right now if you try.
+That’s not what we want. Our goal is to learn how to save versions. To do that, add the files first. You’ll need the git add command for this. When using it, indicate the file name that we want to preserve in its current form. For example, git add index.html.
+If we want to save the current status of all files, we can jump to the option --all. git add --all, or git add -A
+git commit -m "my first commit"
+ 
+To make another commit
+Update file content. Use the git add -A command to select the files for a new version. Call git commit -m "update files" to save the version.
+Linking the local and remote repositories
+To link the remote repository to the local one, use the git remote add command. Assign two parameters to this command: the name of the remote repository and its URL. Like this (using your URL, not this one):
+git remote add origin https://github.com/YandexPracticum/first-project.git
+ 
+Cheat Sheet: Git
+You can’t memorize all the commands at once. But the commit cycle is always the same. We’ve put together another cheat sheet in case you forget what comes after what.
+Commands for synchronizing your local repository with one on GitHub.
+git remote add origin https://github.com/YandexPracticum/first-project.git — when we’re in the folder containing your local repository, this will link it to the remote repository (remember to enter your own URL).
+git push -u origin master — push all files from the local repository to the remote one that you linked to it.
+Commands to commit the work you want to push.
+git add file_name — add a single file by writing its name after add.
+git add -A — to commit all files, use -A.
+git commit -m "comment on commit" — make the commit. Leave a comment with the saved files to make it easier to understand which changes were made.
+Commands to push your commits.
+git pull — pull changes made by other developers.
+git push — publish changes to a remote repositor
+To always keep the cheat sheet near, download it in PDF:
+https://code.s3.yandex.net/web-developer/cheat-sheet/eng/cheat-sheet-git-for-beginners-sprint-1.pdf
+To fix the Fatal: Remote Origin already exists
+$ git remote set-url origin https://github.com/DesireeJoy/first_app.git
+Browser Compatibility
+
+Can I Use? - Check and see if a certain property will work on a certain browser.
+
+Vendor Prefixes 
+(when available) allow you to use a css property that is not supported by default. 
+‘If you want to add a property that isn't supported on a certain browser without a vendor prefix, you should write out the property name with the prefix you need before writing the main property:
+Copy codeCSS
+.my-class {
+    -webkit-box-shadow: /* some value */;
+            box-shadow: /* some value */;
+}
+
+You can use autoprefixer to see what prefixes you need and how to write them: https://autoprefixer.github.io
+
+Adding Fonts
+Using @ Rule to add fonts
+@font-face {
+    src: url('file path to the normal font');
+    font-family: 'Best Font Ever';
+}
+@font-face {
+    src: url('file path to the italic font');
+    font-family: 'Best Font Ever';
+    font-style: italic;
+}
+@font-face {
+    src: url('file path to the semi-bold font');
+    font-family: 'Best Font Ever';
+    font-weight: bold;
+}
+@font-face {
+    src: url('file path to the semi-bold italic font');
+    font-family: 'Best Font Ever';
+    font-style: italic;
+    font-weight: bold;
+}
+Then apply it to the element/block/property/class
+div {
+    font-family: 'Best Font Ever', 'Arial', 'Helvetica', sans-serif;
+;
+    font-weight: bold;
+    font-style: italic;
+}
+Font Formats (Woff and Woff3) 
+What to do with older browsers?
+
+?onnecting fonts in the woff2 and woff formats is enough to ensure they will work fine on all modern browsers. Any web font library will have them. However, old browsers don't know how to work with woff2 and woff, so you need to install alternative fonts separately for them. We use the format() function to create a list of fonts in different formats. The browser will then read this list and select the first font it finds that it can work with.
+
+@font-face {
+    src: url('path to.woff2') format('woff2'),
+        url('path to.woff') format('woff'),
+        url('path to.ttf') format('truetype'),
+        url('path to.eot') format('eot');
+}
+
+Example
+Font Style Sheet:
+
+@font-face {
+    src: 
+      url('https://pictures.s3.yandex.net/fonts/Ibmplexserifsemibold.woff2')
+      format('woff2'),
+      url('https://pictures.s3.yandex.net/fonts/Ibmplexserifsemibold.woff')
+      format('woff'),
+      url('https://pictures.s3.yandex.net/fonts/Ibmplexserifsemibold.ttf')
+      format('truetype');
+    font-family: 'IBM Plex Serif';
+    font-weight: bold;
+} 
+@font-face {
+    src: 
+      url('https://pictures.s3.yandex.net/fonts/ubuntu.woff2') 
+      format('woff2'),
+      url('https://pictures.s3.yandex.net/fonts/ubuntu.woff') 
+      format('woff'),
+      url('https://pictures.s3.yandex.net/fonts/ubuntu.ttf') 
+      format('truetype');
+    font-family: 'Ubuntu';
+    font-weight: normal;
+}
+
+Style Sheet Decl:
+.font-container {
+  width: 90%;
+  margin: auto;
+  color: #fff;
+  padding: 40px 0;
+  border-bottom: 1px solid #fff;
+}
+.font-container_font_ubuntu{
+  font-family:'Ubuntu', sans-serif;
+}
+.font-container__text_weight_bold{
+  font-weight:bold;
+}
+
+Rubber Duck Method - Explain your problems to a Rubber Duck
+
+
