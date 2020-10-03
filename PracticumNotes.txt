@@ -338,6 +338,53 @@ Embed Book Previews from Amazon
 Cool Map Making Embedding Tool
 https://yandex.com/map-constructor/
 
+Informer Widgets
+A widget is a type of iframe. It's a self-contained module installed on a website that most often provides access to resources from another website. A widget is an embeddable, ready-to-use component. It's up to the web developer to decide what the widget will look like. There are two types:
+Interactive — ones that users can interact with (such as search bars).
+Static — those that aren't affected by the user's actions. Such widgets are called "informers."
+Helpful Weather Widget
+Weather forecasts are ideal candidates for an informer widget. You can make one yourself on Yandex Weather.
+https://yandex.com/weather/213/informer
+
+ 
+<video> Tag
+<video src="url">
+<!-- Here url replaces the actual address of a video on the Internet -->
+</video>
+Not self closing
+This tag works with four video formats: .mp4, .mov, .webm, and .ogg. 
+Using multiple formats to work with browser compatibility issues
+you should check every format on the Can I Use website. If a browser doesn't support a certain format, you can bring in an additional <source> tag. If you do this, you should specify the formats using the type attribute:
+Ex.
+<video width="320" height="240" controls>
+     <source src="clip.mp4" type="video/mp4">
+     <source src="clip.ogg" type="video/ogg">
+     <!--If the mp4 format doesn't work, the browser will try the ogg format --> 
+</video>
+
+AUTOPLAY
+
+Enables a video to play as soon as it loads. When using this attribute, keep in mind that some browsers don't support it by default. For example, in Safari, this attribute will work only if users themselves specify that they want videos to play automatically (see Can I Use). The logic behind this is to protect users from intrusive ads.
+Copy codeHTML
+<video autoplay></video>
+
+CONTROLS
+ Allows users to use a virtual control panel to change the volume, pause, and rewind the video:
+Copy codeHTML
+<video controls></video>
+
+MUTED
+<video muted></video>
+LOOP
+<video loop></video>
+SRC 
+TYPE 
+<video type="video/mp4"></video>
+HEIGHT, WIDTH 
+POSTER
+The URL link to the image that a user sees before they click "Play," or while the video is loading:
+Copy codeHTML
+<video poster="/images/example.gif"></video>
 
 Rubber Duck Method - Explain your problems to a Rubber Duck
 
