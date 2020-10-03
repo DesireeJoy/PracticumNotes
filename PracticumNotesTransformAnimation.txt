@@ -10,6 +10,54 @@ The fourth parameter scales the element's height. The value of 5 expands it alon
 The fifth parameter 6 describes the translation of an element along the x-axis in pixels. It is equivalent to the transform value translateX().
 The sixth parameter 7 describes the translation of an element along the y-axis in pixels. It is equivalent to the transform value translateY().
  
+transform: translate(10px, 20px); /* moves the object 10 pixels to the right and 20 pixels down */
+transform: scale(1.5, 0.5); /* enlarges the object by a factor of 1.5 horizontally and halves it vertically */
+transform: rotate(30deg); /*rotates the object 30 degrees clockwise */
+transform: skew(30deg, 40deg); /* skews the top side of the object 30 degrees to the left, the bottom side 30 degrees to the right, the left side 40 degrees up, and the right side 40 degrees down */
+
+translate() is specified in pixels, but they can also be defined in relative values.
+scale() is defined relative to 1. The value 1 signifies a ratio of one to one, meaning the element will not change. Values larger than 1 expand the object, while numbers less than 1 contract it.
+rotate() and skew() can be defined in degrees. Negative values are allowed and are used for counterclockwise rotations and skews to the right.
+The transform property can also be applied in three dimensions to create a virtual 3D effect on the screen. We won't get into the details of this here. For now, we'll just stick to the basics.
+
+Smoothing out Transitions
+transition-property describes which property is being changed.
+transition-duration specifies the transition time in seconds.
+transition-timing-function defines how the transition animation will behave (speed up, slow down, or move linearly).
+transition-delay is the number of seconds between the change in the element's state and the start of the animation.
+div {
+    background-color: black;
+    transition-property: background-color;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    transition-delay: 2s;
+}
+ 
+div:hover {
+    background-color: white;
+}
+Shorthand Version
+
+div {
+    background-color: black;
+    transition: background-color 1s linear 2s;
+}
+
+div:hover {
+    background-color: white;
+}
+
+Timing-function Keywords
+ease
+linear
+ease-in
+ease-out
+ease-in-out
+transition-timing-function: cubic-bezier(1,.2,.52,.46);
+Link to custom timing graphs
+https://cubic-bezier.com/#.17,.67,.83,.67
+
+One thing to keep in mind about the transition property is that it performs best when applied to an element's canonical CSS rule rather than to its :hover rule.
 
 
 
