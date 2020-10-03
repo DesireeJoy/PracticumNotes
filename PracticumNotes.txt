@@ -422,6 +422,86 @@ START
 The start attribute tells the browser to start the video at a certain second, and the = sign assigns the time in seconds. So, by giving the start attribute a value of 3, we make the video start playing from the third second.
 
 JS Scroll
+Let's declare a variable to store the kilometer counter, which is the element with the counter-km ID, and one more variable to store the day counter: the element with the counter-days ID.
+Copy codeJAVASCRIPT
+// declare a variable for storing the kilometer counter
+let kmCounter = document.querySelector('#counter-km');
+// declare a variable for storing the day counter
+let dayCounter = document.querySelector('#counter-days');
+Let's get each of the blocks containing cities. We'll use the same querySelector method. Blocks are arranged from top to bottom. The offsetTop property keeps some distance between the top edge of each block and the top of thepage, i.e. the top edge of the body element. Usually, the offset property starts counting from the top edge of the parent block, which has a position property declaration with one of these three values: relative, absolute or fixed. In our example, there is no such parent, so the top of body becomes our "zero kilometer marker."
+For the block with the some_id ID, we can get the coordinate of its upper border relative to the document body using the expression: document.querySelector('#some_id').offsetTop.
+Let's declare variables for each block and store the corresponding values of the blocks' edges in them:
+Copy codeJAVASCRIPT
+// offsetting the block with the video about Moscow-Kostroma trip
+let kostromaOffset = document.querySelector('#city-kostroma').offsetTop;
+
+// offsetting other blocks
+let yekaterinburgOffset = document.querySelector('#city-yekaterinburg').offsetTop;
+let omskOffset = document.querySelector('#city-omsk').offsetTop;
+let yablPerevalOffset = document.querySelector('#city-yablonoi-pereval').offsetTop;
+let khabarovskOffset = document.querySelector('#city-khabarovsk').offsetTop;
+When we scroll through the page, the coordinate of our position on the vertical axis is stored in the pageYOffset property of the window object. We're calling it pageYOffset because it's storing the offset along the y-axis. We'll store this value in the scrollY variable, which refers to the amount of vertical scrolling we've done:
+Copy codeJAVASCRIPT
+let scrollY = window.pageYOffset;
+To change the content of a menu item as the user scrolls, we need to track scrolling in real time. This means tracking an event, which can be done with the familiar method of the document object: addEventListener(event, event handler function).
+The event we're going to track is scroll.
+All that remains is to code the event handler function that will track the scrolling, compare the coordinate of scrollY with that of the block edge, and determine which block the user is currently in.
+Copy codeJAVASCRIPT
+document.addEventListener('scroll', function () {
+    // we'll compare the scroll and blocks positions here
+});
+The handler will compare the current scroll position and the top edges of the blocks. If the scroll position is less than or equal to the position of the block of a specific city, the menu should show the number of kilometers and days traveled. We'll use the textContent property to do this.
+The textContent property sets or gets the text content of an element. In our case, this property will show new values in the menu through the kmCounter and dayCounter variables.
+These two variables store elements with the counter-km and counter-days identifiers.
+Copy codeJAVASCRIPT
+// if the scroll's position is less than or equal to the position of the Kostroma block
+if (scrollY <= kostromaOffset) {
+// then write zero for the kmCounter and dayCounter variables in HTML
+    kmCounter.textContent = 0;
+    dayCounter.textContent = 0;
+// if the scroll's position is less than or equal to the position of the Yekaterinburg block
+} else if (scrollY <= yekaterinburgOffset) {
+// then write 376 (km) and 1 (the first day of the journey) for the kmCounter and dayCounter variables in HTML 
+    kmCounter.textContent = 376;
+    dayCounter.textContent = 1;
+// and when the scroll's position is greater than that of the Yekaterinburg block, and less than the position of Omsk block, set the values of the variables to 1819 (km) and 2 (days en route) respectively
+} else if (scrollY <= omskOffset) {
+    kmCounter.textContent = 1819;
+    dayCounter.textContent = 2;
+// continue in a similar way
+} else if (scrollY <= yablPerevalOffset) {
+    kmCounter.textContent = 6110;
+    dayCounter.textContent = 4;
+} else if (scrollY <= khabarovskOffset) {
+    kmCounter.textContent = 8534;
+    dayCounter.textContent = 6;
+// if the scroll position exceeds the coordinate of the Khabarovsk block, we are on the last railway section
+} else {
+    kmCounter.textContent = 9300;
+    dayCounter.textContent = 6;
+}
+It's not perfect yet: when the previous block is not completely scrolled over, the menu is already showing the days and kilometers of the next one. Let's add a number to each variable to delay the change:
+Copy codeJAVASCRIPT
+if (scrollY <= kostromaOffset + 200) {
+    kmCounter.textContent = 0;
+    dayCounter.textContent = 0;
+} else if (scrollY <= yekaterinburgOffset + 500) {
+    kmCounter.textContent = 376;
+    dayCounter.textContent = 1;
+} else if (scrollY <= omskOffset + 500) {
+    kmCounter.textContent = 1819;
+    dayCounter.textContent = 2;
+} else if (scrollY <= yablPerevalOffset + 500) {
+    kmCounter.textContent = 6110;
+    dayCounter.textContent = 4;
+} else if (scrollY <= khabarovskOffset + 500) {
+    kmCounter.textContent = 8534;
+    dayCounter.textContent = 6;
+} else {
+    kmCounter.textContent = 9300;
+    dayCounter.textContent = 6;
+}
+This is a pretty simple example of a scrolling script. There are many other ideas and solutions for scrolling. For instance, scrolling can cause the font size of a title to change, or an animation to start.
 
 Rubber Duck Method - Explain your problems to a Rubber Duck
 
