@@ -297,4 +297,64 @@ Two State Animation Markup
 Important:
 Keyframes only serve to describe the different states of the animation. This alone isn't enough. We also need to know how to apply the animation to an element. We'll get to this in the following lessons.
 
+Animations
+Animations are applied to HTML elements using the animation property.
+To make an animation work, you need to set two sub-properties:
+animation-name specifies the name of the @keyframes rule.
+animation-duration sets out the total duration of the animation.
+
+div {
+    animation-name: move;
+    animation-duration: 2s;
+}
+This code will start an animation made from a @keyframes at-rule called move, which will last for two seconds.
+You can also use the following shorthand:
+ 
+div {
+    animation: move 2s;
+}
+There are many sub-properties in the animation property group that you can use to define the behavior of the animation:
+animation-timing-function: You can use this property to specify the trajectory of the animation as a function of progression over time. We studied something similar for the transition property. You can set it as a Bezier cube or with keywords (linear, ease-in, ease-in-out, ease, ease-out).
+animation-delay: The delay before the animation starts (in seconds).
+animation-iteration-count: Specifies how many times the animation will play. This property takes an integer value, but you can use the infinite keyword if you want your animation to repeat indefinitely.
+animation-direction: The direction of the animation. There are four possible values for this, and they can be set with keywords. You can play your animation from start to end, with the value normal; from end to start with reverse; from start to end and back to start with alternate; or from end to start and back to end with alternate-reverse.
+animation-fill-mode: Indicates how the element will behave after the animation finishes. A value of forwards keeps the element in its final state, while backwards returns the element to its initial state. The most complicated option is both, where first of all, the element is set to the state of the first frame. The animation then begins after the amount of time specified in the animation-delay property, and then at the end of the animation, the final state of the element is preserved.
+A visual representation of animation-fill-mode
+The example below shows three different versions of the same animation.
+Before the animation starts, the block with the ball has a soccer ball set as the background. In the first frame of the animation, the background changes to a baseball, then it gradually morphs into a basketball, becoming a full basketball in the final frame. There is also a certain time delay specified for the animation.
+forwards mode: First, we have the animation delay while the ball is a soccer ball, then the ball switches to the first frame (baseball). When the whole animation is complete, the final frame is preserved.
+backwards mode: The first frame (baseball) sits until the delay completes, and then the animation starts, continuing until it ends at the final frame. However, in this case, the final frame isn't preserved, and the ball returns to its original position, becoming a soccer ball again.
+both mode: This animation behaves similarly to forwards mode. We start off immediately with the first frame (baseball), then comes the delay. When the whole animation is finished, the final frame is preserved.
+animation-play-state: Specifies whether or not the animation has started. The running value launches the animation, while paused stops it. This property is often controlled through JavaScript, starting and stopping the animation when different events occur.
+You can also assign the following values to virtually all CSS properties:
+initial: This ensures that the property will have its default value when the page initially loads.
+inherit: This means that the element will inherit the property value of its parent.
+This can be useful in certain cases.
+Here’s how a set of properties looks in full notation and shorthand:
+Copy codeCSS
+div {
+    animation-name: move;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1s;
+    animation-iteration-count: 3;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+div {
+    animation: move 2s ease-in-out 1s 3 reverse forwards running;
+}
+When you write out the properties out in shorthand, the order in which they appear doesn't matter. 
+ 
+The only exception is that 
+animation-delay has to come after animation-duration,
+ since they have the same unit of measurement.
+You can also assign multiple animations to one element by separating them with a comma.
+
+div {
+    animation: move 2s, rotation 5s;
+}
+
 
