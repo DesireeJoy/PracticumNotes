@@ -422,7 +422,88 @@ Upload Reload and Rest
 
 <input type="submit"> <!-- The button for sending the information in the form to the server -->
 
-<input type="image"> <!-- The same as submit, but instead of a button, you get a
+<input type="image"> <!-- The same as submit, but instead of a button, you get a nice picture  -->
 
+Input Fields with Different Syntax
+textarea
+The <input type="text"> tag is fine if you expect the user to enter a single line of text, but if you want to allow for a larger amount of text, it's best to use the <textarea> element.
+NOT SELF CLOSING
+select
+<select>
+    <option>Item 1</option>
+    <option>Item 2</option>
+</select>
+
+Labels
+<label>First name</label>
+<input type="text">
+<label>Last name</label>
+<input type="text">
+
+The first is the id attribute, which is applied to the input field. We use this to give the element a name, and then you can refer to it with the for attribute of the label element, which tells the browser which field the label is bound to.
+ 
+<label for="first-name">First name</label>
+<input type="text" id="first-name">
+<label for="last-name">Last name</label>
+<input type="text" id="last-name">
+Use of id in HTML
+
+This is one of the few cases where the id attribute is used in modern HTML.
+You can count on one hand the number of situations in which the id attribute is used in modern HTML. In our case, if you link a label to an input field in the way shown above, the field will be activated by clicking on the label.
+The value of your id attribute shouldn't contain any digits or special symbols, as this could cause some errors. If it consists of more than one word, they should be separated with dashes. This will help you maintain consistency throughout your HTML code.
+Another common approach to making labels is to make the input field the child element of the label:
+<label>Name
+    <input type="text">
+</label>
+In this case, there's no need for an identifier to link the label with the input field because they're already related. Clicking on the label will still activate the input field. This approach is very common as it's convenient to nest the input field inside the label like this. However, it prevents you from linking the label to another field later on should you need to. So, for this lesson, we're going to connect labels and input fields with identifiers.
+It's important to keep in mind that a label's for attribute signals that there must be an identifier somewhere. If you add this attribute, the element won't be linked to an input field unless there's a corresponding identifier, even if you use the second approach.
+Submitted Values
+Once the user has filled out the form, the data needs to be sent to the server. To do this, the browser encodes the information entered in the form into a URL as a one-line request called a query string.
+server_address/form.html?firstname=Mike&authorized=yes&search=google
+
+The left-hand side of the equation is the field name, which is defined with the name attribute and should be done for every input field in order to ensure that the data is sent to the server correctly.
+
+<input type="text" name="firstname">
+
+The right-hand side is the value attribute, which is what the user has actually entered into the input field. Sometimes, this value is explicitly declared for the input fields, such as with drop-down list items and submit/reset buttons.
+
+Checkboxes and Radio Buttons
+In this lesson, we're going to talk about input fields that allow you to choose between a list of options.
+There are two different ways you can do this. As you can see in the image, checkboxes allow the user to select one or more option, while radio buttons only allow one.
+
+Both types are created with the <input> element. Their behavior is set with the type attribute.
+
+<input type="radio"> <!-- a single choice field (radio button) -->
+<input type="checkbox"> <!-- a multiple choice field (checkbox) -->
+Let's start with checkboxes. To create a list of options for the user to choose from, all you need to do is put them in your HTML code one after another.
+The following code will create a series of checkboxes that allow the user to select some music genres:
+
+<h2>Choose genres:</h2>
+<label for="rock">Rock</label>
+<input type="checkbox" name="genre" id="rock" value="rock">
+<label for="pop">Pop</label>
+<input type="checkbox" name="genre" id="pop" value="pop">
+<label for="hip-hop">Hip hop</label>
+<input type="checkbox" name="genre" id="hip-hop" value="hip-hop">
+<label for="techno">Techno</label>
+<input type="checkbox" name="genre" id="techno" value="techno">
+Each checkbox is bound to a label by an identifier, and the name attribute is the same for every option. ?licking on the label text will activate the checkbox, and when the form is submitted, the selected values are sent to the server along with the genre key.
+The value attribute specifies the values that will be sent to the server. This is a required attribute for checkboxes because the user cannot enter any information into the checkbox. All they can do is check or uncheck the box.
+Radio buttons work in a similar way in that all the options must be somehow linked to each other.
+
+<input type="radio">
+<input type="radio">
+The above code will create two buttons that are activated individually.
+Setting an identical value for the name attribute will link the radio buttons to one another and restrict the user from selecting more than one option:
+
+<label for="yes">Yes</label>
+<input type="radio" name="choice" id="yes" value="yes">
+<label for="no">No</label>
+<input type="radio" name="choice" id="no" value="no">
+The identifier binds the label to its respective input field, and the value attribute defines what data will be submitted to server.
+By default, radio buttons and checkboxes are inactive when the page loads. You can change this by adding the checked attribute, which doesn't need a value. Simply write it inside the <input> element, and the element will become active:
+
+<input type="checkbox" name="music" checked>
+<input type="radio" name="choice" checked>
 
 
