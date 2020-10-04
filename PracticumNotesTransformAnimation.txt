@@ -359,6 +359,70 @@ div {
 
 Forms
  
+<form></form>
  
+Fieldset
+You could just put each field directly inside the form element, but this is bad practice because it just leaves you with a bunch of items without any real structure, which may confuse users.
+It's better to organize our form elements into groups. For example, the street, city, and country fields that make up an address should go together. To do this, we have the <fieldset> element.
+   <fieldset class="form__contact-info">
+        <!-- Form elements for information about the user -->
+    </fieldset>
+    <fieldset class="form__delivery-info">
+        <!-- And this one is for delivery time and address -->
+    </fieldset>
+</form>
+Border on fieldset
+The fieldset element applies a gray border by default, although you usually won't need this. You can get rid of this with the normalize.css file, or simply by applying a CSS property manually in the stylesheet.
+ 
+Form Handlers
+An area that handles things like Form Reset and Clear functions
+<fieldset class='form__handlers'></fieldset>
+ 
+Input Fields
+In order to get information from the user, the forms needs to contain some input fields.
+ <input> Self Closing
+ 
+Different inputs accept different types of information and behave differently. This behavior is determined by the type attribute.
+ 
+INPUT FIELD
+TYPE VALUE
+Username
+text
+Password
+password
+Checkbox
+checkbox
+Login button
+submit
+The most common values for type:
+Using the type attribute, you can create all sorts of different forms.
+ 
+Disabled
+Sometimes you'll need to disable a form field to prevent the user from entering certain information. For example, if a customer has already chosen to have their package delivered in the evening, it would make sense to stop them from being able to choose any daytime time intervals. For this purpose, we have the disabled attribute, which goes inside the opening tag and doesn't have a value:
+ 
+<input type="submit" disabled>
+The disabled attribute will color your input field gray, indicating to the user that they can't select or use it.
+ 
+ 
+ 
+Maximum and Minimum Values
+Range
+<input type="range" min="-20" max="500">
+
+Number
+<input type="number" min="1970" max="2025">
+
+Intervals (by 5’s or 10’s etc)
+<input type="range" min="20" max="50" step="10">
+
+Upload Reload and Rest
+<input type="file"> <!-- This field allows you to upload files -->
+
+<input type="reset"> <!-- The reset button, which resets the whole form to its default values when clicked -->
+
+<input type="submit"> <!-- The button for sending the information in the form to the server -->
+
+<input type="image"> <!-- The same as submit, but instead of a button, you get a
+
 
 
