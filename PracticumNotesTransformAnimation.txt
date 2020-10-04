@@ -59,5 +59,24 @@ https://cubic-bezier.com/#.17,.67,.83,.67
 
 One thing to keep in mind about the transition property is that it performs best when applied to an element's canonical CSS rule rather than to its :hover rule.
 
+Shadows
+Shadows are a useful design tool. They can be applied to elements as well as text. The box-shadow property is used for block shadows.
+The sequence of values for shadow properties for both text and blocks goes as follows:
+Horizontal shadow offset (negative values create a shadow to the left of the object, and positive values to the right).
+Vertical shadow offset (negative values create a shadow above the object, and positive values below).
+Blur radius (the bigger the value, the bigger and lighter the shadow).
+Shadow color (set the same way as text or background color).
+
+In code, values are written as follows:
+Copy codeCSS
+div {
+            box-shadow: 5px 6px 7px red;
+}
+
+h1 {
+        text-shadow: 5px 6px 7px red;
+}
+In both examples, the shadow is offset 5px to the right and 6px down, has a blur radius of 7px, and is red in color.
+
 
 
