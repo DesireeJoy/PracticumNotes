@@ -78,5 +78,159 @@ h1 {
 }
 In both examples, the shadow is offset 5px to the right and 6px down, has a blur radius of 7px, and is red in color.
 
+Linear Gradients
+ gradient allows you to fill a block with color in such a way that one color (called a color stop) smoothly transitions into another between fixed points.
+In CSS, gradients are set by using the background-image property. In fact, a gradient is essentially a basic background image, except that it's generated with code.
+There are two types of gradients: linear and radial.
+Linear
+Linear gradients are defined in code using the linear-gradient() value for background-image.
+
+In the most simple cases, two colors are set in parentheses, separated by a comma. These are the starting and ending colors. The browser creates a smooth transition between them.
+Copy codeCSS
+div {
+    background-image: linear-gradient(#0078FF, #C2E3E3);
+}
+By default, the color transition goes from top to bottom, but this can be changed. One option is to rotate the gradient by a certain amount of degrees.
+For example:
+Copy codeCSS
+div {
+    background-image: linear-gradient(90deg, #0078FF, #C2E3E3);
+}
+This rotates the gradient 90 degrees.
+
+There are special keywords for the most frequently used directions, which you can use instead of degrees.
+
+To build more complex gradients, you can use more than two colors:
+Copy codeCSS
+div {
+    background-image: linear-gradient(#0B2337, #126DDC, #76C2E0, #D1DC9D, #F09174);
+}
+After setting each color, you can set the interval at which the colors should be applied. The first value is the starting point of the direction you’ve set, and the second is the final point.
+Copy codeCSS
+div {
+    width: 300px;
+    height: 300px;
+    background-image: linear-gradient(#0078FF 0px 100px, #B4DEEF 100px 200px, #FF5A0A 200px 300px);
+}
+
+You can also define stop points as percentages:
+Copy codeCSS
+div:first-of-type {
+    width: 300px;
+    height: 300px;
+    background-image: linear-gradient(#0078FF 20%, #C2E3E3 100%);
+}
+div:last-of-type {
+    width: 300px;
+    height: 300px;
+    background-image: linear-gradient(#0078FF 80%, #C2E3E3 100%);
+}
+Result:
+
+You can create some very interesting effects by combining these methods. We've only gone through the most basic gradient settings, which are usually enough for most purposes.
+Radial Gradients
+While colors in a linear gradient change in one direction, with radial gradients, the color changes outwards in all directions starting from a given central point. The gradient itself can be either circular or elliptical.
+The most basic radial gradient is set with the radial-gradient() value as follows:
+ 
+Copy codeCSS
+
+div {
+    background-image: radial-gradient(#0078FF, #C2E3E3);
+}
+
+The default starting point for a radial gradient is the middle of the block, but this can be changed by setting a position with the keyword at (i.e. "at this point").
+Copy codeCSS
+div {
+    width: 300px;
+    height: 300px;
+    background-image: radial-gradient(at 40px 50px, #0078FF, #C2E3E3);
+}
+This code will position the center of the gradient 40px to the right of the left edge of the block and 50px below the upper edge.
+
+Just like with a linear gradient, you can define colors and stop points as percentages:
+Copy codeCSS
+div {
+    width: 300px;
+    height: 300px;
+    background-image: radial-gradient(#002918 10%, #B4DEEF 20%, #FFFFFF 50%, #FF5831 100%);
+}
+or in pixels:
+Copy codeCSS
+div {
+    width: 300px;
+    height: 300px;
+    background-image: radial-gradient(#002918 50px, #B4DEEF 70px, #FFFFFF 100px, #FF5831 200px);
+}
+You can also set exact intervals to create a hard-edged gradient, where the color transition is not smooth:
+Copy codeCSS
+div {
+    width: 300px;
+    height: 300px;
+    background-image: radial-gradient(#002918 0px 20px, #B4DEEF 20px 40px, #FFFFFF 40px 60px, #FF5831 60px 80px);
+}
+
+By setting a width and height in the first parameter of the parentheses, you can either stretch or collapse the ellipse.
+Copy codeCSS
+div {
+    width: 300px;
+    height: 300px;
+    background-image: radial-gradient(40px 100px, #0078FF, #C2E3E3);
+}
+or
+Copy codeCSS
+div {
+    width: 300px;
+    height: 300px;
+    background-image: radial-gradient(100px 40px, #0078FF, #C2E3E3);
+}
+
+There's documentation available that outlines many more things you can do with radial gradients. For now, we've just introduced you to the most basic features.
+
+Block Overflow
+Let’s find out what happens when you try to place a block that's 500×500 in a block that’s 300×600.
+First we're going to nest a div element with an inner class in a parent div with an outer class:
+Copy codeHTML
+<div class="outer">
+    <div class="inner"></div>
+</div>
+Now, using a CSS rule, we set the width of the inner block to be wider than the outer block. We'll also set different colors for each of them:
+Copy codeCSS
+.outer {
+    width: 300px;
+    height: 600px;
+    background-color: rgb(1, 163, 114);
+}
+
+.inner {
+    width: 500px;
+    height: 500px;
+    background-color: rgba(0, 120, 255, .8);
+}
+Result:
+
+When a large block goes beyond the dimensions of its smaller parent, the whole block is still visible by default. In CSS, this situation is called an overflow. When this happens, we can define the parent block's behaviour with the overflow property, which has three possible values:
+auto is the default value.
+scroll hides the areas outside the boundaries of the block, but allows you to scroll inside the parent block to see the rest of the overflowed element.
+hidden hides the parts that don't fit.
+
+You can also set more specific values with these sub-properties:
+overflow-x defines the horizontal behavior.
+overflow-y defines the vertical behavior.
+In this example, we've added an overflow property with a value of hidden:
+Copy codeCSS
+.outer {
+    width: 300px;
+    height: 600px;
+    background-color: rgb(1, 163, 114);
+    overflow: hidden;
+}
+
+.inner {
+    width: 500px;
+    height: 500px;
+    background-color: rgba(0, 120, 255, .8);
+}
+Anything that doesn't fit the parent's dimensions is hidden:
+
 
 
