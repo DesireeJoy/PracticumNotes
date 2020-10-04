@@ -506,4 +506,31 @@ By default, radio buttons and checkboxes are inactive when the page loads. You c
 <input type="checkbox" name="music" checked>
 <input type="radio" name="choice" checked>
 
+Placeholders & Required
+<input type="text" name="firstname" placeholder="John Doe">
+
+<input type="text" required>
+
+More on Styling Text Input Fields, Buttons, and Labels
+1. By default, all input fields and labels are inline elements, so you'll often need the display property to control their positioning.
+2. There are certain styles that an input field doesn't inherit from its parent element by default. This includes font styles, so regardless of whether you apply them to the form, the default browser styles will be applied to the input fields unless you explicitly specify otherwise. To make sure that a certain style is inherited, you can assign the inherit value to its property name:
+
+input {
+    font-family: inherit; 
+/* Now the input field inherits the font of its parent */
+}
+FOCUS pseudo class :focus
+input:focus {
+    /* styles for the active field */
+}
+
+Attribute Selectors
+input[type="submit"] {
+    /* Styles for the submit button */
+}
+any-selector[any-attribute-name="any-attribute-value"] {
+    ...
+}
+
+
 
