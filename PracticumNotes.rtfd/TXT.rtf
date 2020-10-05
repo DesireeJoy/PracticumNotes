@@ -1,0 +1,187 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 Times-Bold;\f2\fswiss\fcharset0 Arial-BoldMT;
+\f3\froman\fcharset0 Times-Roman;\f4\fmodern\fcharset0 CourierNewPSMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red20\green21\blue26;\red255\green255\blue255;
+\red42\green44\blue51;\red245\green247\blue251;\red184\green93\blue213;\red44\green155\blue54;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c10196\c10588\c13333;\cssrgb\c100000\c100000\c100000;
+\cssrgb\c21961\c22745\c25882;\cssrgb\c96863\c97647\c98824;\cssrgb\c77647\c47059\c86667;\cssrgb\c19608\c65882\c27451;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl720\sa160\partightenfactor0
+
+\f0\fs53\fsmilli26667 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Why Have Multiple Style Sheets
+\f1\b\fs48 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl360\partightenfactor0
+\ls1\ilvl0
+\f0\b0\fs26\fsmilli13333 \cf3 \cb4 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 When you've got one CSS file for all the pages on your website, the browser will 
+\f2\b load the whole stylesheet
+\f0\b0  every time you visit a new page. This puts
+\f2\b  unnecessary strain on the server
+\f0\b0  as you only need the styles that apply to elements on that particular webpage.\uc0\u8232 \cb1 \
+\ls1\ilvl0\cb4 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 As your project grows, your stylesheet may contain several thousand lines of code, and will be much harder to maintain. With everything in one place, you 
+\f2\b may have trouble finding the selector 
+\f0\b0 you need. Imagine a library with thousands of books, all of which are on one shelf. It could take quite a while to find the one you're looking for.\uc0\u8232 \cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl360\sa373\partightenfactor0
+\ls1\ilvl0
+\f2\b \cf3 \cb4 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Using blocks repeatedly becomes tedious. 
+\f0\b0 You have to scroll through a long CSS file to find a block with all its elements and modifiers. As the code gets longer, this process becomes more and more complicated.\uc0\u8232 \cb1 \
+\pard\pardeftab720\sl720\sa160\partightenfactor0
+
+\fs53\fsmilli26667 \cf2 \strokec2 A File Structure Analogy
+\f1\b\fs48 \
+\pard\pardeftab720\li960\sl360\partightenfactor0
+
+\f0\b0\fs26\fsmilli13333 \cf3 \cb4 \strokec3 The BEM methodology involves grouping files by type as well as function. This may sound complicated, so we have an analogy to help you understand.
+\f3\fs24 \cf2 \strokec2 \
+
+\f0\fs26\fsmilli13333 \cf3 \strokec3 Imagine that we're Jedi knights from a galaxy far, far away. This is obvious because we're both carrying lightsabers. However, right now we're working on some code, so let's put our weapons aside for a second. In fact, let's take them apart and put the components away in a case. We'll put the hilt in one part, and the crystals in the other. This'll make them easier to put back together when we need to.
+\f3\fs24 \cf2 \strokec2 \
+\pard\pardeftab720\li960\sl360\sa373\partightenfactor0
+
+\f0\fs26\fsmilli13333 \cf3 \strokec3 Now let's translate this into BEM terms. The lightsaber itself is the BEM block 
+\f4 \cf5 \cb6 \strokec5 lightsaber
+\f0 \cf3 \cb4 \strokec3 . The hilt and crystal are BEM elements, called 
+\f4 \cf5 \cb6 \strokec5 __hilt
+\f0 \cf3 \cb4 \strokec3  and 
+\f4 \cf5 \cb6 \strokec5 __crystal
+\f0 \cf3 \cb4 \strokec3  respectively. Within this file structure, this BEM block goes in the 
+\f4 \cf5 \cb6 \strokec5 blocks/
+\f0 \cf3 \cb4 \strokec3  directory
+\f3\fs24 \cf2 \strokec2 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0\fs36 \cf3 \strokec3 He'll set the styles for the hilt and crystals in separate CSS files, and our file names will refer to both block and element:
+\f3\fs24 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0\fs36 \cf3 \strokec3 \pard\pardeftab720\sl480\partightenfactor0
+
+\f3\fs24 \cf2 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0\fs36 \cf3 \cb4 \strokec3 Cool! Now all the lightsaber components are in the right place, so they'll be easy to assemble at any time. Just remember to take the case with you when you travel to another planet.\cb1 \uc0\u8232 \u8232 
+\f3\fs24 \cf2 \strokec2 \
+\pard\pardeftab720\sl720\sa160\partightenfactor0
+
+\f0\fs53\fsmilli26667 \cf2 Importing CSS files with @rules
+\f1\b\fs48 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b0\fs24 \cf2 \
+\pard\pardeftab720\sl380\partightenfactor0
+
+\f4\fs28 \cf7 \cb6 \strokec7 @import\cf5 \strokec5  url(\cf8 \strokec8 "./__crystal/lightsaber__crystal.css"\cf5 \strokec5 );
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f4\fs28 \cf7 \cb6 \strokec7 @import\cf5 \strokec5  url(\cf8 \strokec8 "./__crystal/_color/lightsaber__crystal_color_blue.css"\cf5 \strokec5 );
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f4\fs28 \cf7 \cb6 \strokec7 @import\cf5 \strokec5  url(\cf8 \strokec8 "./__crystal/_color/lightsaber__crystal_color_green.css"\cf5 \strokec5 );
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f4\fs28 \cf7 \cb6 \strokec7 @import\cf5 \strokec5  url(\cf8 \strokec8 "./__hilt/lightsaber__hilt.css"\cf5 \strokec5 );
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f4\fs28 \cf7 \cb6 \strokec7 @import\cf5 \strokec5  url(\cf8 \strokec8 "./__hilt/_type/lightsaber__hilt_type_dual.css"\cf5 \strokec5 );
+\f3\fs24 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl580\partightenfactor0
+
+\f0\fs42\fsmilli21333 \cf2 \cb4 Order of Import
+\f1\b\fs36 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0\b0 \cf3 \strokec3 Take note of the order in which the at-rules are written. BEM modifiers should be imported after the element they modify. This way, the modifier's styles will overwrite those of the element.
+\f3\fs24 \cf2 \strokec2 \
+
+\f0\fs36 \cf3 \strokec3 Now that you're armed with knowledge of BEM, let's head back to Earth and transform the project's file structure.
+\f3\fs24 \cf2 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\sl840\partightenfactor0
+
+\f2\b\fs61\fsmilli30667 \cf3 \cb4 \strokec3 Block Structure
+\f1\fs48 \cf2 \strokec2 \
+\pard\pardeftab720\sl380\partightenfactor0
+
+\f4\b0\fs28 \cf5 \cb6 \strokec5 |blocks
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f4\fs28 \cf5 \cb6 \strokec5 | -- header
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f4\fs28 \cf5 \cb6 \strokec5 | ---- header.css
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f4\fs28 \cf5 \cb6 \strokec5 | -- footer
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f4\fs28 \cf5 \cb6 \strokec5 | ---- footer.css
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f4\fs28 \cf5 \cb6 \strokec5 | -- logo
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f4\fs28 \cf5 \cb6 \strokec5 | ---- logo.css
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f4\fs28 \cf5 \cb6 \strokec5 |index.html
+\f3\fs24 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0\fs36 \cf3 \cb4 \strokec3 Once you've decided how to structure your webpage, you can create a sub-directory for each block within the 
+\f4\fs24 \cf5 \cb6 \strokec5 blocks/
+\f0\fs36 \cf3 \cb4 \strokec3  folder. Each of these directories will contain a CSS file with the block's name. You can then use this folder across all your various projects, as you've already coded the blocks you'll need.
+\f3\fs24 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl840\partightenfactor0
+
+\f2\b\fs61\fsmilli30667 \cf3 \cb4 \strokec3 Element Structure
+\f1\fs48 \cf2 \strokec2 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0\b0\fs36 \cf3 \strokec3 In BEM, elements are components of a block. They don't exist outside of them, so the code for any element within our BEM structure must be placed inside the folder of its respective block. The element folders are given short names such as 
+\f4\fs29\fsmilli14667 \cf5 \cb6 \strokec5 __element-name
+\f0\fs36 \cf3 \cb4 \strokec3  to save time, since the block the element belongs to is apparent from the file structure.
+\f3\fs24 \cf2 \strokec2 \
+
+\f0\fs36 \cf3 \strokec3 The name of a CSS file for an element is written in full, showing the entire path, which avoids having to guess which block the element belongs to.
+\f3\fs24 \cf2 \strokec2 \
+
+\f0\fs36 \cf3 \strokec3 Here's an example of the structure of a block with an element:
+\f3\fs24 \cf2 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\sl480\partightenfactor0
+
+\f0\fs36 \cf3 \cb4 \strokec3 |blocks
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f0\fs36 \cf3 \cb4 \strokec3 | -- menu
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f0\fs36 \cf3 \cb4 \strokec3 | ----__link
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f0\fs36 \cf3 \cb4 \strokec3 | -------- menu__link.css
+\f3\fs24 \cf2 \cb1 \strokec2 \
+
+\f0\fs36 \cf3 \cb4 \strokec3 | ---- menu.css
+\f3\fs24 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\
+\
+}
