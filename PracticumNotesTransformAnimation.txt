@@ -532,5 +532,97 @@ any-selector[any-attribute-name="any-attribute-value"] {
     ...
 }
 
+Styling Toggle Switches and Select Boxes
+For non-standard input fields, the browser will apply its own default styles. By this we mean pretty much any field that doesn't accept text as its input,
+ such as checkbox, radio, range, or select. 
+
+Styling these elements can be quite challenging, and sometimes impossible. To get around the issues involved, one useful approach is to make the field invisible and overlay a custom design.
+
+The way this is done differs depending on the input field, so going over each of them individually would be too time consuming. Instead, we'll show you how to apply styles to checkboxes, and then direct you to some additional resources that will help you apply the same principles to other input fields.
+The first thing you need to do is hide the input field without removing it from the page. We still want users to be able to activate the field. Doing this requires several properties that you're not yet familiar with.
+
+Making the Input Field a Child of the Label Element
+We're going to hide the main <input> element and add a new one. It's absolutely crucial that the label wraps these elements because we're going to activate the new element by clicking on the label:
+
+<label>
+    <input type="checkbox">
+</label>
+
+Hiding the Element Using the Appearance Property
+The appearance property displays elements using the browser's built-in styles. As such, we can use it to make any element look like the browser default of any other element. For example, if we really wanted to, we could make a paragraph look like a button:
+p {
+    appearance: button; /* here we've made a paragraph look like a button, just because we can */
+}
+ 
+If we want to hide the element in question, we can simply set the value of the appearance property to none. The only problem is that this is an experimental property, so it won't work on browsers without a vendor prefix, and this syntax could change in the future. You can check where it's currently supported by searching appearance on CanIUse.com. Internet Explorer doesn't support it at all, but Microsoft has discontinued support for this browser, so the appearance property is likely to be widely supported in the future regardless. 
+Appearance Support
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+             appearance: none;
+}
+Hiding the Element Using the Clip Function
+The clip() function works for elements with absolute positioning and defines the area in which its content will be displayed.
+ 
+clip(X1, Y1, X2, Y2);
+ 
+.input[type="checkbox"] {
+    position: absolute;
+    width: 1px; /* if the element doesn't have any dimensions, some browsers will decide that it doesn't exist at all */
+    height: 1px;
+    overflow: hidden; /* In most cases, it'll work without this property, but we don't want to take any chances. We'll study it in more detail later. For now, suffice to say that it hides elements that go beyond the boundaries of their parents */
+    clip: rect(0 0 0 0);}
+
+Covering it with a visible element
+Once the checkbox is hidden, we need to create a new element next to it, which is where we'll apply our styles. This design will overlay the hidden checkbox. It's like when you hide your real face behind a Snapchat filter.
+
+<label>
+    <input type="checkbox" class="invisible-checkbox"> <!-- we've hidden this element -->
+    <span class="visible-checkbox"></span> <!-- we'll apply styles to this one -->
+</label>
+Styling these kinds of elements is a skill. All you need is a bit of positioning, margin, padding, and border properties. It's important that the new element is located right where you need it and that it looks like a checkbox. You'll see how this is done when you work through the tasks in this lesson.
+
+Describing All Checkbox States with Pseudo-Classes
+Checkbox states:
+Checked or unchecked: defined by the :checked pseudo-class.
+Disabled or enabled: defined by the :disabled pseudo-class.
+Focused or not focused: defined by the :focus pseudo-class.
+So we get the following selectors:
+
+input[type="checkbox"]:disabled {} /* user can't select or edit the field */
+input[type="checkbox"]:checked {} /* user has checked the checkbox */
+input[type="checkbox"]:focus {} /* user has activated the field */
+The problem with this is that our checkbox is hidden. What we need is for the appearance of our overlay element to be regulated by the state of the checkbox itself. Applying styles in this way is a whole other kettle of fish that requires a new type of selector. What we need to do is select the element that comes immediately after our hidden checkbox. We can do this using the adjacent sibling combinator (+):
+
+input[type="checkbox"] + span {} /* this will select our span element as long as it immediately follows the checkbox, and both elements are children of the same parent */
+The above information contains all you need to know in order to code checkboxes and radio buttons. Now you'll consolidate this knowledge by working through the tasks.
+
+Placeholder Styles
+input::placeholder {
+    font-family: Arial;
+}
+The above code applies the font family to all placeholders. However, the ::placeholder pseudo-element isn't supported on Microsoft browsers (Internet Explorer and Edge), so this code won't work for them. To style placeholders on these browsers, the pseudo-element must be preceded by the -ms-input vendor prefix: ::-ms-input-placeholder:
+
+input::-ms-input-placeholder {
+    font-family: Arial;
+}
+
+The CSS standard previously didn't allow for styling placeholders at all, so browser developers all came up with their own vendor prefixes to support experimental solutions:
+
+input::-webkit-input-placeholder {color:#c0392b;} /* for Safari and Chrome */
+input::-moz-placeholder          {color:#c0392b;} /* for Firefox */
+input::-ms-input-placeholder     {color:#c0392b;} /* for IE */
+The following code is bullet proof across most browsers:
+
+input::-webkit-input-placeholder {color:#c0392b;}
+input::-moz-placeholder          {color:#c0392b;}
+input::-ms-input-placeholder     {color:#c0392b;}
+input::placeholder               {color:#c0392b;}
+Vendor Prefixes
+Here are the vendor prefixes for the most common browsers:
+-moz-property for Firefox.
+-webkit-property for Safari and Chrome.
+-ms-property for Internet Explorer and Edge.
+-o-property for Opera.
 
 
