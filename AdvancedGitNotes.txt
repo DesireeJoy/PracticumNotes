@@ -291,7 +291,7 @@ Log and Hash
 In the previous lesson, you studied the anatomy of a Git commit. In this one, we'll teach you how to view commit history, and talk about the technology behind the process of saving information about the modified files.
 Commit History. Logs
 Logs constitute the commit history of all changes in the repository. While talking about Git, we'll consider not all changes as a whole, but only committed ones. There's the git log command to view them. Enter the folder with the third-project project, and execute it:
-Copy codeBASH
+ 
 git log
 
 commit b56aec1742c00c7f773ef2f3be8bd6461bc1fc7f (HEAD -> master)
@@ -327,25 +327,92 @@ Adding files to staged with the git add command in order prepare all of the file
 An Empty Folder May as Well Not Be There
 If you try adding an empty directory in project, Git won't see it. To add an empty folder in your commit, create an empty file inside of it named .gitkeep.
 
+Inspecti changes: git diff
+The git command git diff shows what changes in what files have been made in a given commit. This command has three main options. Let's learn about them through examples:
+Open the index.html file. Add a header tag with the text "Comparison text". It'll change the index.html file and Git will mark it as modified.
+To look at changes enter the git diff command:
+ 
+Use the key Q to quit view mode.
+Markers on the left of lines shows previous current (relevant) state of file:
+A Dash (-) shows what was there previously: there was an empty line between the <body> tags;
+A Plus (+) shows how it's now: the header containing "Comparison text" has appeared.
+Add files to staging using the git add -A command. Don't make a commit yet. Enter the git diff command:
+w mode.
+Markers on the left of lines shows previous current (relevant) state of file:
+A Dash (-) shows what was there previously: there was an empty line between the <body> tags;
+A Plus (+) shows how it's now: the header containing "Comparison text" has appeared.
+Add files to staging using the git add -A command. Don't make a commit yet. Enter the git diff command:
+ 
+Nothing. The git diff command didn't display anything as it displays changes in the "work area" — when files aren't added to staging and not published.
+If you want to see changes in staging, you should apply the git diff command and add a
+--staged flag to it: git diff --staged
+
+Inspecting Changes: git diff
+In the previous lesson, we've talked about hashing. A hash is a unique string of characters obtained from the data on commits:
+
+32d7ffadb1e3049d40c6fae4843bafe38d47346a
+Hash commits indicate what changes have been made.
 Inspecting changes: git diff
 The git command git diff shows what changes in what files have been made in a given commit. This command has three main options. Let's learn about them through examples:
 Open the index.html file. Add a header tag with the text "Comparison text". It'll change the index.html file and Git will mark it as modified.
 To look at changes enter the git diff command:
-Desiree Joy Bradish
+
+<title>Document</title>
+</head>
+<body>
+-    
++    <h1>Comparison text</h1>
+</body>
+</html>
+
+(END)
 Use the key Q to quit view mode.
 Markers on the left of lines shows previous current (relevant) state of file:
 A Dash (-) shows what was there previously: there was an empty line between the <body> tags;
 A Plus (+) shows how it's now: the header containing "Comparison text" has appeared.
 Add files to staging using the git add -A command. Don't make a commit yet. Enter the git diff command:
-Desiree Joy Bradish
-Use the key Q to quit view mode.
-Markers on the left of lines shows previous current (relevant) state of file:
-A Dash (-) shows what was there previously: there was an empty line between the <body> tags;
-A Plus (+) shows how it's now: the header containing "Comparison text" has appeared.
-Add files to staging using the git add -A command. Don't make a commit yet. Enter the git diff command:
-Desiree Joy Bradish
+
+(END)
 Nothing. The git diff command didn't display anything as it displays changes in the "work area" — when files aren't added to staging and not published.
 If you want to see changes in staging, you should apply the git diff command and add a
 --staged flag to it: git diff --staged
+ you've entered the git diff command --staged:
+<title>Document</title>
+ </head>
+ <body>
+-    
++    <h1>Comparison text</h1>
+ </body>
+ </html>
+
+(END)
+Amazing! Now, let's make a commit.
+Committed changes. Comparing commits
+If you want to see committed changes, the git diff command won't help you. And the key
+--commited doesn't exist. Take index.html from the last example and delete the heading we've just added from it. After that, let's make a commit.
+How can we tell Git what committed changes we want to inspect? Only one line has changed in comparison with the previous commit: there was a heading and now we have an empty line. But if we compare it to the commit before that, then nothing has changed: there was and still is an empty line.
+That's why if we want to inspect committed changes, we have to specify what commits we want to compare.
+Let's compare the last two commits. We should have the commit's hash, namely the first seven characters. To save time and not to do it by hand, you can use the git log command with the --oneline key. It'll make a short log appear in the terminal. It has brief information about every commit: the first seven hash characters and comments to each commit.
+
+git log --oneline
+
+11bada1 (HEAD -> master) Added a heading # we'll be comparing this commit
+a9928ab Added a simple layout # to that one
+a602a8d Added a button and styles for it
+In order to compare changes of two commits you have to add their hash after the git diff command:
+
+git diff a9928ab 11bada1
+
+<title>Document</title>
+ </head>
+ <body>
+-    
++    <h1>Comparison text</h1>
+ </body>
+ </html>
+
+(END)
+That's all we have on git diff. You've learned to track down changes before using the git commit and to compare two commits with each other. It's a vital tool for detecting errors.
+But to find an error is half the battle. You still have to solve it somehow. The first way to fix a bug is to create a new commit. However, there's an alternative way to deal with bugs. We'll talk about it in the next lesson.
 
 
