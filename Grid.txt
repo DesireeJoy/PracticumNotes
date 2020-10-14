@@ -1,0 +1,42 @@
+There are only three ways you can adjust your website to different screen sizes without using JavaScript:
+Use relative units of measurement like vh, vw, and % to make a website responsive.
+Write separate CSS rules for common screen sizes, like mobile, tablet, and desktop.
+You can decide whether or not to display a certain element depending on certain conditions. You can do this by changing the value of the display property. A value of none will hide the element, and a value of visible will show
+ 
+Desktop First
+This is the more traditional approach. You start off by building your interface for full-sized screens, such as desktops and laptops, and only then do you start thinking about smaller resolutions like tablets and smartphones. Developers also tend to apply a separate set of styles to especially large desktop displays.
+This has been the most prominent approach over the course of the Internet's lifetime just because fully-fledged smartphone browsers are quite a recent invention.
+As such, while mobile browsing is currently enjoying exponential growth in popularity, Desktop First is still the most popular strategy for working on a web project. Most web devs find this approach more familiar and comfortable to work with, especially when it comes to discussing and agreeing on a brief with a client.
+Mobile First
+Nowadays, the most frequently visited websites are accessed from smartphones. These include social media, online shopping, and food delivery sites. As the name suggests, this approach of web design starts from smaller screen sizes and works its way up to larger resolutions in order to provide the best possible experience for mobile users.
+Websites load faster on smartphones as there are generally fewer elements, and features like animations are made much simpler or done away with completely. Extraneous elements will only annoy and burden mobile users.
+Both of these strategies are perfectly valid. Still, the question of which principle is the best for approaching a project is a hot topic for debate among web developers. Taking this into account, our goal is to master the necessary skills and tools to be able to comfortably use both the Desktop First and Mobile First approaches.
+ 
+ 
+ 
+ 
+Screen Size
+https://screensizemap.com/
+Make responsive layouts.
+Create responsive blocks.
+Change CSS styles at breakpoints.
+analyzing the design
+How does the number of rows and columns change when elements are compressed?
+Do elements change their order relative to one another?
+How do the dimensions and margins of elements change? Try to identify patterns or think of some rules that can be applied.
+What elements appear or disappear depending on the screen size?
+How do items respond to changes in the styles of their containers? For example, the row value of the flex-direction property is often replaced with the column value to bring positioned elements back into the flow.
+ 
+GRID
+What is Grid Layout?
+CSS Grid Layout is a system that allows us to arrange elements along both the x- and y-axes simultaneously.
+Grid has been a hot potato for a while, with people often saying that its time has yet to come. However, this is no longer the case, and is now widely used by developers. A quick look at CanIUse will tell you that Grid Layout currently enjoys widespread browser support.
+.container {
+    display: grid;
+}
+The main difference between Grid and flexbox is how items are arranged by default. When you create a grid container, it's initially made up of one row and one column, which takes up the whole container. If you add more elements to the container, they'll go one on top of the other. For each element you add, another row is created, but there will still only be one column by default. We'll show you how to control the number of rows and columns in Lesson 3.
+Changing the order of grid items is much easier than with flex items. All you need is a few lines of CSS code, and boom! Your website is now responsive.
+CSS Grid Layout Terminology
+In order to get a better idea of what's going on, we need to take a closer look at how grids are formed and break down their constituent parts.
+A grid container consists of a set of horizontal and vertical grid lines inside which grid items are placed, with each item being a direct child of the grid container.
+s
