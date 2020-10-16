@@ -1,418 +1,92 @@
-Working Quickly in the Command Line
-You’ve already done so much work. You’ve learned to work with animations, iframes, and—coolest of all — how to layout shapes. That’s all theory. Now it’s time to get your hands a little dirty with a project.
-To publish this project, you’ll need everything you needed to publish the previous project: Git and the command line. You’ll need these technologies to submit the rest of your projects, final project, and, most likely, to find a developer job. That’s why it’s important to develop your Git and command line skills.
-In this lesson, we’ve compiled some tips and commands that will speed up your work. Remember, sometimes it’s not just what you know, but how fast you can get it done.
-Use shortcuts
-Typing specific keys together to open apps and perform tasks is known as a shortcut or hotkey. Basic shortcuts help developers work more efficiently by entering commands automatically or by more quickly correcting errors in them.
-Everyone makes mistakes from time to time in the terminal. When developers enter a long command and realize they’ve made a mistake somewhere near the beginning, they do the following four things:
-1. Go to the beginning of the row with Ctrl + A
-2. Correct the mistake
-3. Return to the end of the row using Ctrl + E
-4. Finish entering the command
-When you need to correct something in the middle of a command, you have to move to the right place with your Left and Right arrows. If the cursor is moving slowly, set it to maximum speed in keyboard settings. That’ll make it a little easier on you.
-Call Commands from the Buffer
-You’ll have to memorize command syntax that you use in the terminal. But the terminal contains previous commands in its own memory, called its buffer. The buffer remembers all the commands that you’ve already called. If you want to refer to the last command you entered, press the Up arrow. If you press the Up arrow again, you’ll see the second-to-last command. Press it one more time, and you’ll see the command before that. And so on. Likewise, you can go back to the second-to-last command by pressing the down arrow.
-Really, the buffer’s like a list of all the commands you’ve already called. You can move through this list using the up and down arrows.
-Use Auto-fill
-You don’t need to learn every command by heart. All you have to remember is which letter each command starts with. Type the first few letters of a command and press Tab. You’ll see a list of commands that start with those letters. Sometimes you need to press Tab twice.
-Tab doesn’t just automatically fill in commands, it does that for paths too. Start typing the name of a path and press Tab. The terminal will either automatically fill in the folder name or it will display a list of folders that start with the same letters.
-Go to the terminal, type Forward Slash (/) and hit Tab twice. You’ll get the folders of the root directory on the next row. The root directory is the top-level folder on your hard drive. It contains all the other folders:
+Branches
+Branches can be described as isolated versions of your site where you can make commits, and they won't be seen elsewhere. It's very useful when there are several people developing a website: each can work in their own branch without disturbing others.
+Branches are useful even if you work alone. Before coding a new feature, you should make a new branch. When you finish working in this branch, you can merge it with the main branch. It ensures the main branch always has the stable version of your project.
+The main development branch is called master. Itâ€™s usually used to store the final version of a code, and it's the very branch users see.
+The master branch
+The master branch is created automatically when you initialize a Git repo and make your first commit.
+Letâ€™s create a test project and name it learn_branches. Create index.html and style.css files in it, and then commit the project:
+# let's create a new project and initialize it in Git
+mkdir learn_branches && cd learn_branches && git init && touch index.html style.css
 
-/
-Applications/            Network/                 Library/                   
-System/                  Volumes/                 Users/
+git add . # it adds all the files, you can call "git add -A" instead
+git commit -m "Added initial commit" 
+You'll notice that we wrote git add . â€” the . accomplishes the same task -A would have, but only stages changes made in the folder you're currently in and its subfolders.
+After youâ€™ve added the commit, the master branch appears. Enter this command to check it:
+git branch # command for listing branches
+* master # your main branch, the asterisk highlights the branch you are currently in 
+image
+Remember you can exit the branch list by pressing Q.
+Now add this simple HTML code in index.html:
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Git</title>
+</head>
+<body>
 
-# macOS file structure
-To reach the Windows root directory, type the name of the drive (in this case, c/):
+</body>
+</html> 
+Then make another commit:
+git add . && git commit -m "Added basic markup" 
+image
+Creating a new branch using git branch
+Letâ€™s start coding the header for the test project. Create a separate branch to work on the new feature. To do it, execute a command by writing git branch followed by the name you want to give your new branch. Choose such a name for the branch so that it reflects whatâ€™s going on in it. The branch name shouldnâ€™t contain any spaces, otherwise youâ€™ll get an error. We'll discuss naming in more detail in the end of the lesson.
+What we are working on is a new feature, which is a header, so it's calling the new branch feature/header will do well:
+pwd # print working directory
+/Users/students-yandex/dev/learn_branches
 
-c/
-Document and Settings/     Windows/
-Program Files/             Users/
-Program Files(86)/
-
-# Windows file structure
-Let’s practice. Move from the root directory to the user’s folder using the Tab key. The example shows the file structure for macOS. For Windows, type the drive letter (e.g., c/).
-
-/ [Tab] [Tab] 
-# a list of your files will appear here
-
-cd /Users
-# select the Users folder for macOS
-
-cd /Users/s[Tab]
-# type the first letter of the username and press Tab
-
-/Users/students-yandex
-# you get the name of the students-yandex folder appears. Press Enter.
-/
-
-pwd
-# now look to see where you are 
-
-/Users/students-yandex
-# you've moved to the students-yandex folder
-
-# macOS file structure
-You’ve moved from the root directory to the home directory. Entering a Tilde (~) lets you move quickly from anywhere to the user’s folder.
-Practice moving quickly from folder to folder on your own. Here’s a list of basic navigation commands:
-pwd—view your location.
-ls—view a list of files in the folder
-cd—move to the selected folder.
-You can also assign a path to the cd command using ~, /, and the Tab key:
-
-cd ~/Des[Tab]/
-cd ~/Desktop/
-# here’s how you can move quickly to the desktop
-
-# macOS file structure
-You’ll find yourself needing to move from directory to directory very often, so quick navigation will save you loads of time. Use hotkeys, the buffer, and auto-fill to find more time for studying programming.
-
-Copying and Moving Files
-In the previous lesson, we discussed two ways of navigating within the terminal. You can move to the root and home directories using / and ~. You can assign a path to the cd command to instantly move to the folder you need. These two techniques make navigating within the terminal a lot easier.
-But there’s only one reason to move from folder to folder: to access the data inside them. In this lesson, we’ll discuss how to move and copy files.
-You’ve most likely already copied folders on your computer using the graphic user interface (GUI): either the file manager on Windows or Finder on macOS. GUIs are convenient to use, but the terminal has one big advantage.
-It works a lot faster than GUIs, and allows you to administer the server. Usually, the server doesn’t have a graphic user interface, so you have to manage files with something called bash.
-In this lesson, we’ll talk about copying and moving files. We’ll discuss viewing and editing files in the next lesson.
-Now For a Few Life Hacks
-You don’t necessarily need to enter and execute commands in the terminal one at a time. You can enter commands as a list, instead of one-by-one. To do that, use double Ampersands (&&):
-
-mkdir third-project && cd third-project && touch index.html style.css
-# create the third-project folder,
-# go to the third-project folder
-# and create two files in it: index.html and style.css.
-This technique is especially convenient when commands take a long time to execute. While you’re transferring these commands in a list, you can take a coffee break while the terminal performs these resource-intensive tasks one by one.
-Let’s return to managing data.
-Copying cp
-There are two paths after the name of the cp command.
-First, you have the path to the file that needs to be copied. Then, you have the path to the folder where you need to save the copy.
-
-cp what_to_copy where_to_copy
-You can select several files simultaneously:
-
-cp what_to_copy what_to_copy where_to_copy
-Practice a little. Create the third-project folder with two files inside it. Use the && operator to do that:
-
-mkdir third-project && cd third-project && touch index.html style.css
-This entry is equal to calling these commands one at a time:
-
-mkdir third-project
-# create the folder,
-
-cd third-project
-# go to it,
-
-touch index.html style.css 
-# create two files.
-Create the button folder and two files: button.css and button_disabled.css:
-
-pwd
-/Users/stydents-yandex/Documents/dev/third-project/
-# here we are
-
-mkdir button && touch button_disabled.css button.css
-# create the folder and files
-
-ls # let's check
-button
-button.css
-button_disabled.css
-Let’s move on to copying. Copy the button.css and button_disabled.css files to the button folder.cp button.css button_disabled.css ./button
-Remember that you don’t have to type the full names of the files and folders. All you have to do is type the first few letters and hit Tab.
-Go to the button folder and look at its contents:
-
-cd button # go to the button folder
-
-pwd # see where we are
-/Users/stydents-yandex/Documents/dev/third-project/button
-
-ls # yay! the files are copied!
-button.css 
-button_disabled.css
-If you get confused with relative paths, ask a question in Slack or read the Relative Paths to Files lesson again .
-Copying and Moving Files
-In the previous lesson, we discussed two ways of navigating within the terminal. You can move to the root and home directories using / and ~. You can assign a path to the cd command to instantly move to the folder you need. These two techniques make navigating within the terminal a lot easier.
-But there’s only one reason to move from folder to folder: to access the data inside them. In this lesson, we’ll discuss how to move and copy files.
-You’ve most likely already copied folders on your computer using the graphic user interface (GUI): either the file manager on Windows or Finder on macOS. GUIs are convenient to use, but the terminal has one big advantage.
-It works a lot faster than GUIs, and allows you to administer the server. Usually, the server doesn’t have a graphic user interface, so you have to manage files with something called bash.
-In this lesson, we’ll talk about copying and moving files. We’ll discuss viewing and editing files in the next lesson.
-Now For a Few Life Hacks
-You don’t necessarily need to enter and execute commands in the terminal one at a time. You can enter commands as a list, instead of one-by-one. To do that, use double Ampersands (&&):
-mkdir third-project && cd third-project && touch index.html style.css
-# create the third-project folder,
-# go to the third-project folder
-# and create two files in it: index.html and style.css.
-This technique is especially convenient when commands take a long time to execute. While you’re transferring these commands in a list, you can take a coffee break while the terminal performs these resource-intensive tasks one by one.
-Let’s return to managing data.
-Copying cp
-There are two paths after the name of the cp command.
-First, you have the path to the file that needs to be copied. Then, you have the path to the folder where you need to save the copy.
-cp what_to_copy where_to_copy
-You can select several files simultaneously:
-cp what_to_copy what_to_copy where_to_copy
-Practice a little. Create the third-project folder with two files inside it. Use the && operator to do that:
-mkdir third-project && cd third-project && touch index.html style.css
-This entry is equal to calling these commands one at a time:
-mkdir third-project
-# create the folder,
-
-cd third-project
-# go to it,
-
-touch index.html style.css 
-# create two files.
-Create the button folder and two files: button.css and button_disabled.css:
-pwd
-/Users/stydents-yandex/Documents/dev/third-project/
-# here we are
-
-mkdir button && touch button_disabled.css button.css
-# create the folder and files
-
-ls # let's check
-button
-button.css
-button_disabled.css
-Let’s move on to copying. Copy the button.css and button_disabled.css files to the button folder
-cp button.css button_disabled.css ./button
-Remember that you don’t have to type the full names of the files and folders. All you have to do is type the first few letters and hit Tab.
-Go to the button folder and look at its contents:
-cd button # go to the button folder
-
-pwd # see where we are
-/Users/stydents-yandex/Documents/dev/third-project/button
-
-ls # yay! the files are copied!
-button.css 
-button_disabled.css
-If you get confused with relative paths, ask a question in Slack or read the Relative Paths to Files lesson again .
-What command do you type to copy a file?
-cp; then the path to the folder where I want to save the copies; then the files I need to copy.
-cp; then the names of the files I need to copy; then the path to the folder where I want to save the copies.
-Now move the button_disabled.css and button.css files to the button_disabled folder:
-ls # let's check what's where
-button
-button_disabled
-button.css
-button_disabled.css 
-
-mv button_disabled.css ./button_disabled
-# first write the name of the file that you want to move; then write the path where you want to move it to 
-
-cd button_disabled && ls
-button_disabled.css 
-# then go to the button_disabled folder and check that everything works right
-
-Viewing and Editing Files with the Command Prompt
-In this lesson, you’ll learn how to work with files from the command prompt. It’s like getting a peek behind the curtains at the theater. We’ll go even further in this lesson. We’ll look inside a file and add content to it. Bash has a full-fledged text editor to do that.
-In the previous lesson, we discussed how to copy and move files. In other words, we managed the locations of files.
-In this lesson, we’ll go one level deeper, to the content of files.
-
-Viewing cat Content
-The cat command lets us see file contents in the terminal. After the command, enter the file name whose content you want to view:
-\
-cat index.html
-cat ~/Documents/file.txt
-The cat command only works with text-based files (files ending in .css, .html, or .txt, for example). You can’t use this command to display an image.
-Open your code editor (e.g., VSCode), and open the third-project project folder in it. Add a simple layout to the index.html file:
+git branch feature/header # created a new branch
+git branch # checked the current branch
+feature/header # the new branch has appeared
+* master # but, as the asterisk shows, we're still working in the master branch 
+image
+Even though we created the feature/header branch, we're still working inside master. To switch to the feature/header branch, enter the git checkout feature/header command:
+git checkout feature/header # switched to the feature/header branch
+git branch # checked the current branch
+* feature/header # as you can see, the asterisk moved! We're now in feature/header
+master 
+Git also allows creating a branch and immediately switching to it. It's done with this command:
+git checkout -b feature/header # created the feature/header branch and immediately switched to it 
+We have switched to the feature/header branch. Letâ€™s add the header and commit it:
+<!-- index.html -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+    <meta charset="UTF-8">
+    <title>Git</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-
-</body>
-</html>
-Return to the terminal and open the third-project project folder. Type the cat command and file name. In this case, the file name is index.html.
-cat index.html
-# display the content from index.html in the terminal window
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="UTF-8">
-        <title>Document</title>
-</head>
-<body>
-
-</body>
-</html>
-The cat command has settings that can be configured using keys. The -n key enables line numbers:
-cat -n index.html
-# display the content from index.html in the terminal window
-
-1    <!DOCTYPE html>
-2    <html lang="en">
-3    <head>
-4        <meta charset="UTF-8">
-5        <title>Document</title>
-6    </head>
-7    <body>
-8       
-9  </body>
-10 </html>
-You can find other settings for the cat command in official Bash documentation.
-Vim. The Text Editor of No Return
-The cat command can come in handy. Usually, however, viewing files isn’t enough. We want to change these files by either adding to or deleting them. We need a special software program for that — a code editor. Bash has just the program we need in its Vim text editor.
-The way Vim works is a little unusual. It operates in one of three modes: command mode, editing mode, and viewing mode. We’ll explore each one.
-Enter Vim by typing vim in the terminal window. Initialize git in the third-project project using the git init command. Then save your files and commit, but without using the -m key or a comment. You’ll see this screen:
-
-Vim opened a text file with information about the commit. Try commenting on the commit in the first row and press Enter. You’ll end up with something like this:
-
-The reason why is that Vim is open in viewing mode. If you want to enter commands again, you’ll have to switch to command mode. If you don’t know how to do that, it’s pretty easy to get confused and stuck in the code editor. Beginning developers often find themselves in this situation. It’s even inspired a meme about Vim being impossible to exit. Based on Stack Overflow’s estimates, over a million people got stuck in Vim last year. To avoid falling into the Vim trap, let’s look at its basic capabilities.
-
-How to exit Vim
-Press Escape. Now you’ve switched to command mode. Now input :q! and press Enter. This is how you exit a document without saving changes.
-Our mission is to comment on the commit and save the file. To do that, switch to editing mode. Input git commit one more time. Now enter the i key. That’s how you switch to editing mode. Comment on the commit. Then switch to command mode using the Escape key. Input the command :wq and press Enter. That’s how you save the file and exit Vim.
-How do you exit Vim?
-By switching to command mode using the Escape, inputting :q!, and pressing Enter.
-By switching the mode using the i key, inputting :q!, and pressing Enter.
-Check answer
-
-
-One More Thing About git add and git commit
-We've figured out how the command line works, now some more details on committing: how exactly Git marks files when you edit, add or publish (commit) them. Let's describe the whole commit cycle.
-git add
-You've edited some of the files in your project, and now it's time to commit them. But before that, you need to execute the git add command. Why?
-The git add command tells Git which files must be committed while the git commit command is used for actually publishing all of the added changes. It allows changing and editing files before committing.
-This way we can distinguish:
-Edited files: added using the git add command but changed after that.
-Untracked files: new files not yet added using the git add command.
-Once you use the git add command, all the files get into a temporary storage called index or staging area. To add a single file, type git add file_name; to add all of the modified files call git add -A.
-
- 
-Practicum
-This is Practicum's Student Guidance Team. If you're having any difficulties, feel free to contact us, and we'll do our best to help. Choose the most convenient way to reach us.
-Choose preferred contact method
-Log and Hash
-In the previous lesson, you studied the anatomy of a Git commit. In this one, we'll teach you how to view commit history, and talk about the technology behind the process of saving information about the modified files.
-Commit History. Logs
-Logs constitute the commit history of all changes in the repository. While talking about Git, we'll consider not all changes as a whole, but only committed ones. There's the git log command to view them. Enter the folder with the third-project project, and execute it:
- 
-git log
-
-commit b56aec1742c00c7f773ef2f3be8bd6461bc1fc7f (HEAD -> master)
-Author: Students Yandex <students-yandex@yandex.ru>
-Date:   Fri Jan 31 14:13:29 2020 +0300
-        Added a simple layout
-
-commit 424b8b68035696ce1411bed31555cc6034636d5e
-Author: Students Yandex <students-yandex@yandex.ru>
-Date:   Fri Jan 31 13:59:48 2020 +0300
-        Added a button and its styles
-
-(END)
-To quit viewing log, press the Q key.
-Notice the long string of digits and letters next to the word “commit.” This is the commit hash that stores all the information about this commit.
-Commit hash
-Hashing is the process of converting any data into a unique value of a certain length, or a hash.
-Hashing requires an algorithm. It processes the data so that the output is a string of characters. What is special about hashing is that any data set will have its unique string that will by no chance be repeated more than once.
-Information about a commit can also be hashed: it says when a commit was made, which files were modified, which lines of code changed and added. Git applies hashing algorithms to all this information, and the result is a unique commit hash:
- 
-32d7ffadb1e3049d40c6fae4843bafe38d47346a
-# example of a commit hash
-Git calculates a hash for any operation. Something created or changed? Git calculates a hash of these changes. All these hashes are stored in various files in the .git directory. In the last lesson of this chapter, we'll tell you how exactly Git does it.
-You've learned to view logs of your commits, and you know where the commit hash can be found. By comparing hashes, we can compare commits: different hashes mean different commits. This is very helpful when fixing bugs.
-We'll see how in the next lesson.
-Next
-
-
-Let's summarize the whole commit cycle:
-Adding new files: they are marked as untracked.
-Editing old files: they are marked as modified.
-Adding files to staged with the git add command in order prepare all of the files for commit.
-An Empty Folder May as Well Not Be There
-If you try adding an empty directory in project, Git won't see it. To add an empty folder in your commit, create an empty file inside of it named .gitkeep.
-
-Inspecti changes: git diff
-The git command git diff shows what changes in what files have been made in a given commit. This command has three main options. Let's learn about them through examples:
-Open the index.html file. Add a header tag with the text "Comparison text". It'll change the index.html file and Git will mark it as modified.
-To look at changes enter the git diff command:
- 
-Use the key Q to quit view mode.
-Markers on the left of lines shows previous current (relevant) state of file:
-A Dash (-) shows what was there previously: there was an empty line between the <body> tags;
-A Plus (+) shows how it's now: the header containing "Comparison text" has appeared.
-Add files to staging using the git add -A command. Don't make a commit yet. Enter the git diff command:
-w mode.
-Markers on the left of lines shows previous current (relevant) state of file:
-A Dash (-) shows what was there previously: there was an empty line between the <body> tags;
-A Plus (+) shows how it's now: the header containing "Comparison text" has appeared.
-Add files to staging using the git add -A command. Don't make a commit yet. Enter the git diff command:
- 
-Nothing. The git diff command didn't display anything as it displays changes in the "work area" — when files aren't added to staging and not published.
-If you want to see changes in staging, you should apply the git diff command and add a
---staged flag to it: git diff --staged
-
-Inspecting Changes: git diff
-In the previous lesson, we've talked about hashing. A hash is a unique string of characters obtained from the data on commits:
-
-32d7ffadb1e3049d40c6fae4843bafe38d47346a
-Hash commits indicate what changes have been made.
-Inspecting changes: git diff
-The git command git diff shows what changes in what files have been made in a given commit. This command has three main options. Let's learn about them through examples:
-Open the index.html file. Add a header tag with the text "Comparison text". It'll change the index.html file and Git will mark it as modified.
-To look at changes enter the git diff command:
-
-<title>Document</title>
-</head>
-<body>
--    
-+    <h1>Comparison text</h1>
+    <header class="header"></header>
 </body>
 </html>
 
-(END)
-Use the key Q to quit view mode.
-Markers on the left of lines shows previous current (relevant) state of file:
-A Dash (-) shows what was there previously: there was an empty line between the <body> tags;
-A Plus (+) shows how it's now: the header containing "Comparison text" has appeared.
-Add files to staging using the git add -A command. Don't make a commit yet. Enter the git diff command:
+```css
+/* style.css */
 
-(END)
-Nothing. The git diff command didn't display anything as it displays changes in the "work area" — when files aren't added to staging and not published.
-If you want to see changes in staging, you should apply the git diff command and add a
---staged flag to it: git diff --staged
- you've entered the git diff command --staged:
-<title>Document</title>
- </head>
- <body>
--    
-+    <h1>Comparison text</h1>
- </body>
- </html>
+body {
+    margin: 0;
+}
 
-(END)
-Amazing! Now, let's make a commit.
-Committed changes. Comparing commits
-If you want to see committed changes, the git diff command won't help you. And the key
---commited doesn't exist. Take index.html from the last example and delete the heading we've just added from it. After that, let's make a commit.
-How can we tell Git what committed changes we want to inspect? Only one line has changed in comparison with the previous commit: there was a heading and now we have an empty line. But if we compare it to the commit before that, then nothing has changed: there was and still is an empty line.
-That's why if we want to inspect committed changes, we have to specify what commits we want to compare.
-Let's compare the last two commits. We should have the commit's hash, namely the first seven characters. To save time and not to do it by hand, you can use the git log command with the --oneline key. It'll make a short log appear in the terminal. It has brief information about every commit: the first seven hash characters and comments to each commit.
+.header {
+    height: 100px;
+    background-color: #000;
+} 
+git branch
+* feature/header
+master
 
-git log --oneline
-
-11bada1 (HEAD -> master) Added a heading # we'll be comparing this commit
-a9928ab Added a simple layout # to that one
-a602a8d Added a button and styles for it
-In order to compare changes of two commits you have to add their hash after the git diff command:
-
-git diff a9928ab 11bada1
-
-<title>Document</title>
- </head>
- <body>
--    
-+    <h1>Comparison text</h1>
- </body>
- </html>
-
-(END)
-That's all we have on git diff. You've learned to track down changes before using the git commit and to compare two commits with each other. It's a vital tool for detecting errors.
-But to find an error is half the battle. You still have to solve it somehow. The first way to fix a bug is to create a new commit. However, there's an alternative way to deal with bugs. We'll talk about it in the next lesson.
-
-
+git add . && git commit -m "Added header" 
+image
+To sum up
+You successfully created master and feature/header branches. Practice moving back and forth between them using git checkout and git branch â€” notice that the code in your code editor changes while you do so.
+You can create a branch and switch to it with just one command using git checkout with the -b key:
+git checkout -b branch_name # Git will create a new branch and switch to it 
+There are different approaches to branch naming; moreover, each team chooses their own. There is the general principle: branch names should always make it clear for other developers whatâ€™s going on inside them.
+If a branch has a new feature, start its name with the word feature:
+git checkout -b feature/header 
+If youâ€™re going to fix bug on a branch, start the name with bugfix:
+git checkout -b bugfix/horizontal-scroll 
+When you finish working in a branch (say, youâ€™ve finished the header), you need to add the result of your work into the main branch. How to do it? We'll see in the next lesson.
